@@ -1,0 +1,41 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+
+      "guest_os_type": "ubuntu-64",
+      "memory": 1024,
+      "name": "ubuntu-20.04-live-server",
+      "iso_urls": [
+        "iso/ubuntu-20.04-live-server-amd64.iso",
+        "https://releases.ubuntu.com/20.04/ubuntu-20.04-live-server-amd64.iso"
+      ],
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "caf3fd69c77c439f162e2ba6040e9c320c4ff0d69aad1340a514319a9264df9f",
+
+      "http_directory": "subiquity/http",
+      "output_directory": "output/live-server",
+
+      "boot_wait": "5s",
+      "boot_command": [
+        "<enter><enter><f6><esc><wait> ",
+        "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
+        "<enter><wait>"
+      ],
+      "shutdown_command": "shutdown -P now",
+
+      "ssh_username": "ubuntu",
+      "ssh_password": "ubuntu",
+      "ssh_pty": true,
+      "ssh_timeout": "20m",
+      "ssh_handshake_attempts": "20"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["ls /"]
+    }
+  ]
+}
