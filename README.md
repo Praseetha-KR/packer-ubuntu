@@ -28,6 +28,7 @@ For more info: [imagineer.in/blog/packer-build-for-ubuntu-20-04](https://imagine
 TODO:
 
 ## Ubuntu 20.04 Server (VirtualBox)
+packer version 1.6.5
 
 Run packer build:
 
@@ -36,7 +37,7 @@ $ packer build -on-error=ask -force <TODO>
 ```
 
 ## Ubuntu 20.04 Legacy Server (VirtualBox)
-
+packer version 1.6.5
 
 ```bash
 $ packer build -on-error=ask -force <TODO>
